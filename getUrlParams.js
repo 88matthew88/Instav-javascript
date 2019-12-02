@@ -71,11 +71,29 @@ function createQueryString(obj) {
   //Looping through the object's properties to grab the property name and value
   for( var name in obj ) {
 
-      // getting the property name and value and seperating them by = 
+      // getting the property name and value and seperating them by =
       str += (name + '=' + obj[name] + '&');
   }
 
   str = '?' + str.slice(0,-1);
 
   return str;
+}
+
+function formValues(){
+
+  // Gets all elements from a form to use as a counter in the for loop and to add to object
+  var elements = document.getElementById("formId").elements;
+
+  // Object that will hold form values
+  var obj = {};
+
+  //loops through form elements adding them to object
+  for (var i = 0; i < elements.length -1 ; i++)
+  {
+    var item = elements.item(i);
+    obj[item.name] = item.value;
+  }
+
+  console.log(JSON.stringify(obj));
 }
